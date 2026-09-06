@@ -1,7 +1,7 @@
 # 🧠 Prompt Engineering — Interactive Notebooks
 
 > A hands-on, example-driven course covering all 8 core prompt engineering techniques.  
-> Runs on **free API keys** (Groq · Gemini) — no paid account required.
+> Runs on **MeshAPI** (recommended), or free API keys (Groq · Gemini).
 
 ---
 
@@ -82,27 +82,39 @@ Open notebooks in order: `01 → 02 → 03`
 
 ---
 
-## 🔑 API Keys — Free Options Available
+## 🔑 API Keys
+
+> [!IMPORTANT]
+> ### ⭐ Recommended: MeshAPI
+>
+> This course is configured to use **[MeshAPI](https://meshapi.ai)** — a unified AI gateway that lets you access multiple frontier models (GPT-5, Claude, Gemini, and more) through a **single API key** and the standard OpenAI SDK. No per-model key management required.
+>
+> **Get your key:** 🔗 [meshapi.ai](https://meshapi.ai)  
+> **Endpoint:** `https://api.meshapi.ai/v1`  
+> **Key prefix:** `rsk_...`
 
 You only need **one** provider. All three work identically inside the notebooks.
 
-| Provider | Cost | Free Limits | Get Your Key |
-|----------|------|-------------|--------------|
+| Provider | Cost | Models Available | Get Your Key |
+|----------|------|-----------------|--------------|
+| ⭐ **MeshAPI** | Paid | GPT-5, Claude, Gemini & more | [meshapi.ai](https://meshapi.ai) |
 | **Groq** ✅ | Free, no credit card | Rate-limited free tier | [console.groq.com/keys](https://console.groq.com/keys) |
 | **Gemini** ✅ | Free, no credit card | Generous daily quota | [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) |
-| **OpenAI** | Paid | — | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) |
 
 Add exactly one key to `.env`:
 
 ```dotenv
-# Option A — Groq (recommended for students, fastest inference)
+# ── Option A: MeshAPI ⭐ (recommended — access to all frontier models)
+# Get your key at https://meshapi.ai
+MESH_API_KEY=rsk_xxxxxxxxxxxxxxxxxxxx
+OPENAI_BASE_URL=https://api.meshapi.ai/v1
+OPENAI_MODEL=openai/gpt-5.6-sol
+
+# ── Option B — Groq (free, no credit card)
 GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxxxxxx
 
-# Option B — Gemini (most generous free quota)
+# ── Option C — Gemini (free, most generous quota)
 GEMINI_API_KEY=AIzaxxxxxxxxxxxxxxxxx
-
-# Option C — OpenAI (paid)
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxx
 ```
 
 The notebooks **auto-detect** which key you've set and configure the right model automatically. No other code changes needed.
@@ -111,9 +123,9 @@ The notebooks **auto-detect** which key you've set and configure the right model
 
 | Provider | Model | Notes |
 |----------|-------|-------|
+| **MeshAPI** ⭐ | `openai/gpt-5.6-sol` | Frontier model via unified MeshAPI endpoint |
 | Groq | `openai/gpt-oss-120b` | GPT-class open model, 131k context |
 | Gemini | `models/gemini-3.7-flash` | Latest Flash, fast & capable |
-| OpenAI | `gpt-4o` | Best quality |
 
 ---
 
